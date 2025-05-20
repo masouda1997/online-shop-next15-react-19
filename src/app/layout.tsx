@@ -1,6 +1,8 @@
+import './globals.css';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
+import { MonitorSmartphone, ShoppingCart } from 'lucide-react';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -27,7 +29,23 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<div className="px-32 py-10 bg-red-200">{children}</div>
+				<main className="flex flex-col justify-between min-h-screen bg-red-200">
+					<header className=" fixed flex justify-between items-center shadow-xl bg-linear-to-b from-white to-gray-100 px-32 w-full h-20 ">
+						<div className="flex items-center gap-2">
+							<MonitorSmartphone />
+							<Link href={'/'} className="font-bold text-2xl">
+								Digital Shop
+							</Link>
+						</div>
+						<div>
+							<ShoppingCart />
+						</div>
+					</header>
+					<div className="px-32 mt-28">{children}</div>
+					<footer className='bg-black text-white flex justify-center py-1'>
+						<p>&copy; All right Reserved By Masoud Anaraki</p>
+					</footer>
+				</main>
 			</body>
 		</html>
 	);
