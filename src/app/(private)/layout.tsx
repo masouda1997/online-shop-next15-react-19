@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const layout = () => {
-  return (
-    <p> this is  private layout</p>
-  )
-}
+	return <p> this is private layout</p>;
+};
 
-export default layout
+export default layout;

@@ -42,7 +42,7 @@ export default function RootLayout({
 						</div>
 					</header>
 					<div className="px-32 mt-28">{children}</div>
-					<footer className='bg-black text-white flex justify-center py-1'>
+					<footer className="bg-black text-white flex justify-center py-1">
 						<p>&copy; All right Reserved By Masoud Anaraki</p>
 					</footer>
 				</main>

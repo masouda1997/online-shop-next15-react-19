@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Product = () => {
-	return <div>Product</div>;
+const page = async ({ params }: { params: Promise<{ id: number }> }) => {
+    const data = await params;
+    console.log(data)
+	return <div>{data.id}</div>;
 };
 
-export default Product;
+export default page;
