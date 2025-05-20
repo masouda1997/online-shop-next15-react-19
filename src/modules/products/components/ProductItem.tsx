@@ -11,13 +11,12 @@ import {
 
 const ProductItem = async (props: { product: any }) => {
 	const { product } = props;
-	console.log(product)
+	console.log(product);
 	return (
 		<Card className="w-[400px] transform transition-transform duration-300 hover:scale-105">
 			<CardHeader>
-				<div className='relative'>
-
-					<figure className='w-full h-[300px] '>
+				<div className="relative">
+					<figure className="w-full h-[300px] ">
 						<Image
 							src={product?.images[0]?.image || '/assets/noImage.png'}
 							className="rounded-t-lg object-cover"

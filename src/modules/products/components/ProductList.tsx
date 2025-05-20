@@ -4,7 +4,7 @@ import ProductItem from './ProductItem';
 
 const ProductList = () => {
 	return (
-		<div className='flex justify-between items-center'>
+		<div className="flex justify-between items-center">
 			{DATA.map((item) => (
 				<ProductItem key={item.id} product={item} />
 			))}
