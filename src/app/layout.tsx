@@ -21,8 +21,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
+	ads
 }: Readonly<{
 	children: React.ReactNode;
+	ads:React.ReactNode;
 }>) {
 	return (
 		<html lang="en">
@@ -30,7 +32,7 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
 				<main className="flex flex-col justify-between min-h-screen bg-red-200">
-					<header className=" fixed flex justify-between items-center shadow-xl bg-linear-to-b from-white to-gray-100 px-32 w-full h-20 ">
+					<header className=" fixed flex justify-between items-center shadow-xl bg-linear-to-b from-white to-gray-100 px-32 w-full h-20 !z-50 ">
 						<div className="flex items-center gap-2">
 							<MonitorSmartphone />
 							<Link href={'/'} className="font-bold text-2xl">
@@ -42,6 +44,7 @@ export default function RootLayout({
 						</div>
 					</header>
 					<div className="px-32 mt-28">{children}</div>
+					<div className="my-10 mx-auto flex justify-center">{ads}</div>
 					<footer className="bg-black text-white flex justify-center py-1">
 						<p>&copy; All right Reserved By Masoud Anaraki</p>
 					</footer>
