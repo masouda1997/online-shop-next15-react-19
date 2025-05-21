@@ -27,7 +27,7 @@ const ProductDetail = (product: any) => {
 								<Image
 									alt={product?.name}
 									// src={`${product?.images[0].image}`}
-									src={'https://picsum.photos/500/500?random=2'} 
+									src={'https://picsum.photos/500/500?random=2'}
 									width={700}
 									height={200}
 									quality={50}
@@ -50,12 +50,13 @@ const ProductDetail = (product: any) => {
 							<p className="mt-2 text-sm">
 								Category: {product?.category}
 							</p>
-                            <div className='flex justify-start items-start gap-2'>
-                                <MousePointer2 size={40}/>
-                                <p className=" text-gray-600 line-clamp-2 hover:line-clamp-none ">
-                                    {product?.description || 'no description is available !'}
-                                </p>
-                            </div>
+							<div className="flex justify-start items-start gap-2">
+								<MousePointer2 size={40} />
+								<p className=" text-gray-600 line-clamp-2 hover:line-clamp-none ">
+									{product?.description ||
+										'no description is available !'}
+								</p>
+							</div>
 							<Button className="my-4">
 								<ShoppingCart />
 							</Button>
