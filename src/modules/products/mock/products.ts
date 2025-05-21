@@ -8,6 +8,7 @@ export const DATA = [
 		images: [
 			{ image: 'https://picsum.photos/200/300?random=1' },
 			{ image: 'https://picsum.photos/200/300?random=2' },
+			{ image: 'https://picsum.photos/200/300?random=3' }
 		],
 		description:
 			'Lorem ipsum dolor sit amet, consetetur sadipscing elitr. sed diam nonumy eirmod tempor invidunt. ut labore et dolore magna aliquyam erat, sed diam voluptua.',
