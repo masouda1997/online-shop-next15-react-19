@@ -8,7 +8,7 @@ export const DATA = [
 		images: [
 			{ image: 'https://picsum.photos/200/300?random=1' },
 			{ image: 'https://picsum.photos/200/300?random=2' },
-			{ image: 'https://picsum.photos/200/300?random=3' }
+			{ image: 'https://picsum.photos/200/300?random=3' },
 		],
 		description:
 			'Lorem ipsum dolor sit amet, consetetur sadipscing elitr. sed diam nonumy eirmod tempor invidunt. ut labore et dolore magna aliquyam erat, sed diam voluptua.',
@@ -21,5 +21,13 @@ export const DATA = [
 		price: 2970,
 		quantity: 340,
 		images: [{ image: 'https://picsum.photos/300/200?random=3' }],
+	},
+	{
+		id: 3,
+		name: 'item 3',
+		category: 'book',
+		price: 334,
+		quantity: 340,
+		images: [{ image: 'https://picsum.photos/300/200?random=4' }],
 	},
 ];
