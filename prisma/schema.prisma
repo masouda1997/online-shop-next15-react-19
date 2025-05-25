@@ -12,3 +12,23 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum ProductCategory {
+  LAPTOP
+  MOBILE
+  WATCH
+  MONITOR 
+  MOUSE
+  KEYBOARD
+  OTHERS
+}
+
+// generate schema 
+model Product{
+  id String @id @default(uuid())
+  name String
+  category ProductCategory
+  description String?
+  price Float? @default(0.0)
+  quantity Int? @default(0)
+}
