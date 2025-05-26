@@ -31,4 +31,13 @@ model Product{
   description String?
   price Float? @default(0.0)
   quantity Int? @default(0)
+  images Image[]
+}
+
+//one to many 
+model Image{
+  id String @id @default(uuid())
+  image String
+  product Product? @relation(fields: [productId] , references: [id])
+  productId String?
 }
