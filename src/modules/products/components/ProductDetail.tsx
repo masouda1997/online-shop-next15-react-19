@@ -43,7 +43,7 @@ const ProductDetail = (product: ProductWithImages) => {
 						</div>
 						<div className="flex flex-col justify-between">
 							<p className="text-xl font-semibold flex justify-start items-center ">
-								${ product.price && product?.price.toFixed(2)}
+								${product.price && product?.price.toFixed(2)}
 							</p>
 							<p className="text-gray-700">
 								Quantity: {product?.quantity}

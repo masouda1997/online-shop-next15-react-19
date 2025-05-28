@@ -3,7 +3,6 @@ import React from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '../ui';
 import { DATA } from '@/modules/products/mock/products';
-// 
 
 const CatalogList = () => {
 	const images = DATA[0].images;

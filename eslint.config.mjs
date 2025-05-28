@@ -13,8 +13,8 @@ const eslintConfig = [
 	...compat.extends('next/core-web-vitals', 'next/typescript'),
 	{
 		rules: {
-			"no-console": ["warn", { allow: ['error' , 'warn'] }], // Warns on any console usage except console.error and console.warn
-			'@typescript-eslint/no-explicit-any': 'off'
+			'no-console': ['warn', { allow: ['error', 'warn'] }], // Warns on any console usage except console.error and console.warn
+			'@typescript-eslint/no-explicit-any': 'off',
 		},
 	},
 ];

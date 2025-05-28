@@ -6,9 +6,9 @@ import ProductDetail from '@/modules/products/components/ProductDetail';
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const data = await params;
-	const {id} = data
+	const { id } = data;
 	// const prod = DATA[0];
-	const prod = await getProductById(id) as ProductWithImages
+	const prod = (await getProductById(id)) as ProductWithImages;
 	return <ProductDetail {...prod} />;
 };
 

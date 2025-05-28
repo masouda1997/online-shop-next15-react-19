@@ -6,9 +6,10 @@ const ProductList = (props: { products: ProductWithImages[] }) => {
 	const { products } = props;
 	return (
 		<div className="flex justify-between items-center">
-			{products && products.map((item) => (
-				<ProductItem key={item.id} product={item} />
-			))}
+			{products &&
+				products.map((item) => (
+					<ProductItem key={item.id} product={item} />
+				))}
 		</div>
 	);
 };

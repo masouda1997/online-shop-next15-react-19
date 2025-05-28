@@ -6,16 +6,16 @@ export const getProducts = async () => {
 };
 
 export const getProductAPI = async () => {
-    const result = await fetch("/api/products",{method:"GET"})
-    const response  = await result.json();
-	return response
-}
+	const result = await fetch('/api/products', { method: 'GET' });
+	const response = await result.json();
+	return response;
+};
 
 export const getProductById = async (id: string) => {
 	const result = await prisma.product.findFirst({
 		where: { id },
 		include: { images: true },
 	});
-    if(!result) return null 
-    return result
+	if (!result) return null;
+	return result;
 };
