@@ -1,7 +1,10 @@
-import React from 'react';
-
-const layout = () => {
-	return <p> this is private layout</p>;
-};
+function layout({ children }: Readonly<{ children: React.ReactNode }>) {
+	
+	return (
+		<>
+			{children}
+		</>
+	);
+}
 
 export default layout;

@@ -31,7 +31,7 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<main className="flex flex-col justify-between min-h-screen bg-red-200">
+				<main className="flex flex-col justify-between min-h-screen bg-blue-50">
 					<header className=" fixed flex justify-between items-center shadow-xl bg-linear-to-b from-white to-gray-100 px-32 w-full h-20 !z-50 ">
 						<div className="flex items-center gap-2">
 							<MonitorSmartphone />
