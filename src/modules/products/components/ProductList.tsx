@@ -1,11 +1,12 @@
 import React from 'react';
-import { DATA } from '../mock/products';
 import ProductItem from './ProductItem';
+import { ProductWithImages } from '@/types';
 
-const ProductList = () => {
+const ProductList = (props: { products: ProductWithImages[] }) => {
+	const { products } = props;
 	return (
 		<div className="flex justify-between items-center">
-			{DATA.map((item) => (
+			{products && products.map((item) => (
 				<ProductItem key={item.id} product={item} />
 			))}
 		</div>

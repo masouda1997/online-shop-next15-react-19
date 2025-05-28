@@ -1,14 +1,11 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from '../ui';
 import { DATA } from '@/modules/products/mock/products';
-import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+// 
 
 const CatalogList = () => {
-	const params = useSearchParams();
-	const id = params.get('id');
-	console.log(params, id);
 	const images = DATA[0].images;
 	return (
 		<div className="flex flex-wrap justify-center mb-4">

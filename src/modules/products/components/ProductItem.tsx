@@ -9,9 +9,8 @@ import {
 	CardHeader,
 } from '@/components/ui';
 
-const ProductItem = async (props: { product: any }) => {
+const ProductItem = (props: { product: any }) => {
 	const { product } = props;
-	console.log(product);
 	return (
 		<Card className="w-[400px] transform transition-transform duration-300 hover:scale-105">
 			<CardHeader>
@@ -19,10 +18,8 @@ const ProductItem = async (props: { product: any }) => {
 					<figure className="w-full h-[300px] ">
 						<Image
 							src={product?.images[0]?.image || '/assets/noImage.png'}
-							className="rounded-t-lg object-cover"
+							className="rounded-t-lg object-contain"
 							alt={product?.name}
-							// width={300}
-							// height={200}
 							fill={true}
 						/>
 					</figure>

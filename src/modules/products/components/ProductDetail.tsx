@@ -1,6 +1,5 @@
 'use client';
 
-import { MousePointer2, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -10,8 +9,10 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui';
+import { ProductWithImages } from '@/types';
+import { MousePointer2, ShoppingCart } from 'lucide-react';
 
-const ProductDetail = (product: any) => {
+const ProductDetail = (product: ProductWithImages) => {
 	return (
 		<div className="container mx-auto py-10">
 			<Card className="max-w-3xl mx-auto ">
@@ -42,7 +43,7 @@ const ProductDetail = (product: any) => {
 						</div>
 						<div className="flex flex-col justify-between">
 							<p className="text-xl font-semibold flex justify-start items-center ">
-								${product?.price.toFixed(2)}
+								${ product.price && product?.price.toFixed(2)}
 							</p>
 							<p className="text-gray-700">
 								Quantity: {product?.quantity}
