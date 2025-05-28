@@ -20,10 +20,9 @@ import {
 } from '@/components/ui';
 import Link from 'next/link';
 
-
 const ProductForm = (props: { product: Product | null }) => {
 	const { product } = props;
-	
+
 	return (
 		<Card className="w-[500px] mx-auto mt-10">
 			<form className="max-w-lg">
@@ -93,11 +92,7 @@ const ProductForm = (props: { product: Product | null }) => {
 					</Button>
 				</CardFooter>
 			</form>
-			{product?.id && (
-				<CardFooter>
-                    test
-				</CardFooter>
-			)}
+			{product?.id && <CardFooter>test</CardFooter>}
 		</Card>
 	);
 };

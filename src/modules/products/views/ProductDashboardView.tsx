@@ -5,7 +5,7 @@ import { getProducts } from '../services';
 // this view is a server component
 const ProductDashboardView = async () => {
 	const products = await getProducts();
-	return(
+	return (
 		<div>
 			<ProductTable products={products} />
 		</div>

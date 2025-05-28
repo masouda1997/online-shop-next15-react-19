@@ -4,7 +4,7 @@ import { getProductAPI } from '../services';
 import { ProductWithImages } from '@/types';
 import ProductList from '../components/ProductList';
 
-// this view is a client component 
+// this view is a client component
 
 const ProductListView = () => {
 	const [products, setProducts] = useState<ProductWithImages[]>([]);
