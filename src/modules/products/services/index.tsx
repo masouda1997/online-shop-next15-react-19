@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 import { Product } from '@prisma/client';
-import { redirect} from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 export const getProducts = async () => {
 	const result = await prisma.product.findMany({ include: { images: true } });
@@ -40,7 +40,7 @@ export const upsertProduct = async (product: Product) => {
 	return result;
 };
 
-export const deleteProductById = async (id: string) => {  
+export const deleteProductById = async (id: string) => {
 	await prisma.product.delete({ where: { id } });
-	redirect('/dashboard/products') // we add this for revalidate the page automatically
+	redirect('/dashboard/products'); // we add this for revalidate the page automatically
 };

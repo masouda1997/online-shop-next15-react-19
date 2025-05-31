@@ -20,9 +20,9 @@ const ProductTable = (props: {
 	products: Awaited<ReturnType<typeof getProducts>>;
 }) => {
 	const { products } = props;
-	const onDeleteProduct = (id:string)=>{
-		deleteProductById(id)
-	} 
+	const onDeleteProduct = (id: string) => {
+		deleteProductById(id);
+	};
 	return (
 		<div className="border border-gray-200 rounded-lg shadow-md mt-4">
 			<div className="flex justify-between items-center p-4 bg-gray-100">
@@ -75,7 +75,11 @@ const ProductTable = (props: {
 											<Edit />
 										</Link>
 									</Button>
-									<Button onClick={()=> {onDeleteProduct(product.id)}}>
+									<Button
+										onClick={() => {
+											onDeleteProduct(product.id);
+										}}
+									>
 										<Trash2 />
 									</Button>
 								</div>
@@ -87,7 +91,7 @@ const ProductTable = (props: {
 					<TableRow>
 						<TableCell colSpan={5}>Total</TableCell>
 						<TableCell className="text-right ">
-							<span className='text-white bg-gray-950 py-1 px-2 rounded-sm'>
+							<span className="text-white bg-gray-950 py-1 px-2 rounded-sm">
 								{products.length}
 							</span>
 						</TableCell>

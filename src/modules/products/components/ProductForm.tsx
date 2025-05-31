@@ -18,23 +18,22 @@ import {
 	SelectContent,
 	SelectItem,
 } from '@/components/ui';
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Product, ProductCategory } from '@prisma/client';
 import { upsertProduct } from '../services';
 
 const ProductForm = (props: { product: Product | null }) => {
 	const { product } = props;
-	const {register , handleSubmit , setValue} = useForm<Product>()
-	const onSubmitForm = (data:Product)=>{
+	const { register, handleSubmit, setValue } = useForm<Product>();
+	const onSubmitForm = (data: Product) => {
 		const _product = {
 			...data,
-			price:parseFloat(data.price?.toString() || "0"),
-			quantity:parseInt(data.quantity?.toString() || "0"),
-			category:data.category || product?.category
-		}
-		upsertProduct(_product)
-	}
-
+			price: parseFloat(data.price?.toString() || '0'),
+			quantity: parseInt(data.quantity?.toString() || '0'),
+			category: data.category || product?.category,
+		};
+		upsertProduct(_product);
+	};
 
 	return (
 		<Card className="w-[500px] mx-auto mt-10">
@@ -61,7 +60,9 @@ const ProductForm = (props: { product: Product | null }) => {
 						<Label htmlFor="category">Category</Label>
 						<Select
 							required
-							onValueChange={(value)=> setValue('category' , value as ProductCategory)}
+							onValueChange={(value) =>
+								setValue('category', value as ProductCategory)
+							}
 							defaultValue={product?.category || ProductCategory.OTHERS}
 						>
 							<SelectTrigger>
