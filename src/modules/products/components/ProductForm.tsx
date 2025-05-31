@@ -1,6 +1,6 @@
 'use client';
 
-import { Product, ProductCategory } from '@prisma/client';
+import Link from 'next/link';
 import {
 	Input,
 	Button,
@@ -18,23 +18,40 @@ import {
 	SelectContent,
 	SelectItem,
 } from '@/components/ui';
-import Link from 'next/link';
+import {useForm} from 'react-hook-form';
+import { Product, ProductCategory } from '@prisma/client';
+import { upsertProduct } from '../services';
 
 const ProductForm = (props: { product: Product | null }) => {
 	const { product } = props;
+	const {register , handleSubmit , setValue} = useForm<Product>()
+	const onSubmitForm = (data:Product)=>{
+		const _product = {
+			...data,
+			price:parseFloat(data.price?.toString() || "0"),
+			quantity:parseInt(data.quantity?.toString() || "0"),
+			category:data.category || product?.category
+		}
+		upsertProduct(_product)
+	}
+
 
 	return (
 		<Card className="w-[500px] mx-auto mt-10">
-			<form className="max-w-lg">
+			<form className="max-w-lg" onSubmit={handleSubmit(onSubmitForm)}>
 				<CardHeader>
 					<CardTitle> Product</CardTitle>
-
-					<CardDescription>Create New Product</CardDescription>
+					{product ? (
+						<CardDescription>Edit The Product</CardDescription>
+					) : (
+						<CardDescription>Create New Product</CardDescription>
+					)}
 				</CardHeader>
 				<CardContent>
 					<div className="my-2">
 						<Label htmlFor="name">Product Name</Label>
 						<Input
+							{...register('name')}
 							id="name"
 							required
 							defaultValue={product?.name || ''}
@@ -44,6 +61,7 @@ const ProductForm = (props: { product: Product | null }) => {
 						<Label htmlFor="category">Category</Label>
 						<Select
 							required
+							onValueChange={(value)=> setValue('category' , value as ProductCategory)}
 							defaultValue={product?.category || ProductCategory.OTHERS}
 						>
 							<SelectTrigger>
@@ -61,6 +79,7 @@ const ProductForm = (props: { product: Product | null }) => {
 					<div className="my-2">
 						<Label htmlFor="description">Description</Label>
 						<Textarea
+							{...register('description')}
 							id="description"
 							defaultValue={product?.description || ''}
 						/>
@@ -68,6 +87,7 @@ const ProductForm = (props: { product: Product | null }) => {
 					<div className="my-2">
 						<Label htmlFor="price">Price</Label>
 						<Input
+							{...register('price')}
 							type="number"
 							id="price"
 							step="0.01"
@@ -77,6 +97,7 @@ const ProductForm = (props: { product: Product | null }) => {
 					<div className="my-2">
 						<Label htmlFor="quantity">Quantity</Label>
 						<Input
+							{...register('quantity')}
 							type="number"
 							id="quantity"
 							defaultValue={product?.quantity || ''}
@@ -92,7 +113,7 @@ const ProductForm = (props: { product: Product | null }) => {
 					</Button>
 				</CardFooter>
 			</form>
-			{product?.id && <CardFooter>test</CardFooter>}
+			{/* {product?.id && <CardFooter>test</CardFooter>} */}
 		</Card>
 	);
 };

@@ -13,13 +13,16 @@ import {
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getProducts } from '../services';
 import { Edit, PlusCircle, Trash2 } from 'lucide-react';
+import { deleteProductById, getProducts } from '../services';
 
 const ProductTable = (props: {
 	products: Awaited<ReturnType<typeof getProducts>>;
 }) => {
 	const { products } = props;
+	const onDeleteProduct = (id:string)=>{
+		deleteProductById(id)
+	} 
 	return (
 		<div className="border border-gray-200 rounded-lg shadow-md mt-4">
 			<div className="flex justify-between items-center p-4 bg-gray-100">
@@ -72,7 +75,7 @@ const ProductTable = (props: {
 											<Edit />
 										</Link>
 									</Button>
-									<Button>
+									<Button onClick={()=> {onDeleteProduct(product.id)}}>
 										<Trash2 />
 									</Button>
 								</div>
@@ -83,8 +86,10 @@ const ProductTable = (props: {
 				<TableFooter>
 					<TableRow>
 						<TableCell colSpan={5}>Total</TableCell>
-						<TableCell className="text-right">
-							{products.length}
+						<TableCell className="text-right ">
+							<span className='text-white bg-gray-950 py-1 px-2 rounded-sm'>
+								{products.length}
+							</span>
 						</TableCell>
 					</TableRow>
 				</TableFooter>
