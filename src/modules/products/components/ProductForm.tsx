@@ -34,10 +34,10 @@ const ProductForm = (props: { product: Product | null }) => {
 			price: parseFloat(data.price?.toString() || '0'),
 			quantity: parseInt(data.quantity?.toString() || '0'),
 			category: data.category || product?.category,
-			...(product?.id && { id: product.id })
+			...(product?.id && { id: product.id }),
 		};
 		upsertProduct(_product);
-		redirect('/dashboard/products')
+		redirect('/dashboard/products');
 	};
 
 	return (
@@ -111,7 +111,7 @@ const ProductForm = (props: { product: Product | null }) => {
 						/>
 					</div>
 				</CardContent>
-				
+
 				<CardFooter className="flex justify-between">
 					<Button variant="outline" asChild>
 						<Link href="/dashboard/products">Back</Link>
@@ -122,11 +122,11 @@ const ProductForm = (props: { product: Product | null }) => {
 				</CardFooter>
 			</form>
 
-			{product?.id && 
+			{product?.id && (
 				<CardFooter>
 					<UploadImage productId={product?.id} />
 				</CardFooter>
-			}
+			)}
 		</Card>
 	);
 };
