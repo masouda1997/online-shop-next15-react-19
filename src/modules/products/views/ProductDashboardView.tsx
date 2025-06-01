@@ -1,6 +1,5 @@
-import React from 'react';
-import ProductTable from '../components/ProductTable';
 import { getProducts } from '../services';
+import ProductTable from '../components/ProductTable';
 
 // this view is a server component
 const ProductDashboardView = async () => {

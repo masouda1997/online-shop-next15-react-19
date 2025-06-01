@@ -61,7 +61,7 @@ const ProductTable = (props: {
 							<TableCell className="flex justify-center">
 								<Image
 									src={
-										product.images[0]?.image || '/assets/noImage.png'
+										`/${product.images.at(-1)?.image}` || '/assets/noImage.png'
 									}
 									alt=""
 									width={50}

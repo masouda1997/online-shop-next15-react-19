@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import {
 	Input,
 	Button,
@@ -18,21 +17,27 @@ import {
 	SelectContent,
 	SelectItem,
 } from '@/components/ui';
+import Link from 'next/link';
+import UploadImage from './UploadImage';
 import { useForm } from 'react-hook-form';
-import { Product, ProductCategory } from '@prisma/client';
+import { redirect } from 'next/navigation';
 import { upsertProduct } from '../services';
+import { Product, ProductCategory } from '@prisma/client';
 
 const ProductForm = (props: { product: Product | null }) => {
 	const { product } = props;
 	const { register, handleSubmit, setValue } = useForm<Product>();
+
 	const onSubmitForm = (data: Product) => {
 		const _product = {
 			...data,
 			price: parseFloat(data.price?.toString() || '0'),
 			quantity: parseInt(data.quantity?.toString() || '0'),
 			category: data.category || product?.category,
+			...(product?.id && { id: product.id })
 		};
 		upsertProduct(_product);
+		redirect('/dashboard/products')
 	};
 
 	return (
@@ -46,6 +51,7 @@ const ProductForm = (props: { product: Product | null }) => {
 						<CardDescription>Create New Product</CardDescription>
 					)}
 				</CardHeader>
+
 				<CardContent>
 					<div className="my-2">
 						<Label htmlFor="name">Product Name</Label>
@@ -105,6 +111,7 @@ const ProductForm = (props: { product: Product | null }) => {
 						/>
 					</div>
 				</CardContent>
+				
 				<CardFooter className="flex justify-between">
 					<Button variant="outline" asChild>
 						<Link href="/dashboard/products">Back</Link>
@@ -114,7 +121,12 @@ const ProductForm = (props: { product: Product | null }) => {
 					</Button>
 				</CardFooter>
 			</form>
-			{/* {product?.id && <CardFooter>test</CardFooter>} */}
+
+			{product?.id && 
+				<CardFooter>
+					<UploadImage productId={product?.id} />
+				</CardFooter>
+			}
 		</Card>
 	);
 };
