@@ -1,16 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { getProductAPI } from '../services';
+import { getProductsAPI } from '../services';
 import { ProductWithImages } from '@/types';
 import ProductList from '../components/ProductList';
-
-// this view is a client component
 
 const ProductListView = () => {
 	const [products, setProducts] = useState<ProductWithImages[]>([]);
 
 	const getProductData = async () => {
-		const result = await getProductAPI();
+		const result = await getProductsAPI();
 		setProducts(result);
 	};
 

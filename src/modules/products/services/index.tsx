@@ -1,7 +1,11 @@
 'use server'; //to fix the bug of prisma client
 
+// If you still want to call getProductsAPI inside a 'use server' file (which I don’t recommend for internal APIs), use an absolute URL or move it to a client side component
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
 import { prisma } from '@/lib/prisma';
-import { Product } from '@prisma/client';
+import { Product } from '@prisma/client/edge';
 import { redirect } from 'next/navigation';
 
 export const getProducts = async () => {
@@ -18,7 +22,7 @@ export const getProductById = async (id: string) => {
 	return result;
 };
 
-export const upsertProduct = async (product: Product) => {
+export const userProduct = async (product: Product) => {
 	const { id } = product;
 	let result;
 	if (id) {
@@ -40,8 +44,9 @@ export const deleteProductById = async (id: string) => {
 };
 
 // this is for next internal api for the clint side data fetching
-export const getProductAPI = async () => {
-	const result = await fetch('/api/products', { method: 'GET' });
+export const getProductsAPI = async () => {
+	const result = await fetch(baseUrl + '/api/products', { method: 'GET' });
 	const response = await result.json();
+	console.log('🧪', response);
 	return response;
 };

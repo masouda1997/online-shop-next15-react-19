@@ -17,7 +17,15 @@ const ProductItem = (props: { product: any }) => {
 				<div className="relative">
 					<figure className="w-full h-[300px] ">
 						<Image
-							src={product?.images[0]?.image || '/assets/noImage.png'}
+							// src={product?.images[0]?.image || '/assets/noImage.png'}
+
+							// next/image requires the src to start with / (relative to /public) or be a full http:// URL.You're using product.images[0].image, which might be something like assets/xyz.webp, without a /.
+
+							src={
+								product?.images?.[0]?.image?.startsWith('/')
+									? product.images[0].image
+									: `/${product.images[0].image || 'assets/noImage.png'}`
+							}
 							className="rounded-t-lg object-contain"
 							alt={product?.name}
 							fill={true}

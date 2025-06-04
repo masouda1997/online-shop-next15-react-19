@@ -21,8 +21,9 @@ import Link from 'next/link';
 import UploadImage from './UploadImage';
 import { useForm } from 'react-hook-form';
 import { redirect } from 'next/navigation';
-import { upsertProduct } from '../services';
-import { Product, ProductCategory } from '@prisma/client';
+import { userProduct } from '../services';
+import { Product, ProductCategory } from '@prisma/client/edge';
+// import { Product, ProductCategory } from '@prisma/client';
 
 const ProductForm = (props: { product: Product | null }) => {
 	const { product } = props;
@@ -36,7 +37,7 @@ const ProductForm = (props: { product: Product | null }) => {
 			category: data.category || product?.category,
 			...(product?.id && { id: product.id }),
 		};
-		upsertProduct(_product);
+		userProduct(_product);
 		redirect('/dashboard/products');
 	};
 
